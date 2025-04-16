@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی پیشرفته و زیبا</title>
+    <title>منوی پیشرفته با ۷ لینک</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         body {
@@ -113,10 +113,11 @@
     </style>
 </head>
 <body>
-    <h1>منوی پیشرفته با لینک‌ها</h1>
+    <h1>منوی پیشرفته با ۷ لینک</h1>
     <div class="dropdown">
         <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
         <div id="dropdownContent" class="dropdown-content">
+            <!-- لینک‌ها -->
             <div class="box">
                 <p><span class="icon">🔗</span><strong>لینک 1</strong></p>
                 <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
@@ -128,6 +129,36 @@
                 <button onclick="copyToClipboard('https://example.com/link2')">کپی لینک</button>
                 <div id="qrcode2" class="qrcode"></div>
                 <p>کلیک‌ها: <span id="counter2">0</span></p>
+            </div>
+            <div class="box">
+                <p><span class="icon">🔗</span><strong>لینک 3</strong></p>
+                <button onclick="copyToClipboard('https://example.com/link3')">کپی لینک</button>
+                <div id="qrcode3" class="qrcode"></div>
+                <p>کلیک‌ها: <span id="counter3">0</span></p>
+            </div>
+            <div class="box">
+                <p><span class="icon">🔗</span><strong>لینک 4</strong></p>
+                <button onclick="copyToClipboard('https://example.com/link4')">کپی لینک</button>
+                <div id="qrcode4" class="qrcode"></div>
+                <p>کلیک‌ها: <span id="counter4">0</span></p>
+            </div>
+            <div class="box">
+                <p><span class="icon">🔗</span><strong>لینک 5</strong></p>
+                <button onclick="copyToClipboard('https://example.com/link5')">کپی لینک</button>
+                <div id="qrcode5" class="qrcode"></div>
+                <p>کلیک‌ها: <span id="counter5">0</span></p>
+            </div>
+            <div class="box">
+                <p><span class="icon">🔗</span><strong>لینک 6</strong></p>
+                <button onclick="copyToClipboard('https://example.com/link6')">کپی لینک</button>
+                <div id="qrcode6" class="qrcode"></div>
+                <p>کلیک‌ها: <span id="counter6">0</span></p>
+            </div>
+            <div class="box">
+                <p><span class="icon">🔗</span><strong>لینک 7</strong></p>
+                <button onclick="copyToClipboard('https://example.com/link7')">کپی لینک</button>
+                <div id="qrcode7" class="qrcode"></div>
+                <p>کلیک‌ها: <span id="counter7">0</span></p>
             </div>
         </div>
     </div>
@@ -145,8 +176,7 @@
                 alert('خطا در کپی کردن لینک: ' + err);
             });
 
-            // افزایش شمارنده کلیک
-            const counterId = text.includes("link1") ? "counter1" : "counter2";
+            const counterId = text.includes("link") ? "counter" + text.slice(-1) : "";
             const counter = document.getElementById(counterId);
             counter.textContent = parseInt(counter.textContent) + 1;
         }
@@ -159,16 +189,13 @@
             }, 2000);
         }
 
-        new QRCode(document.getElementById("qrcode1"), {
-            text: "https://example.com/link1",
-            width: 80,
-            height: 80
-        });
-        new QRCode(document.getElementById("qrcode2"), {
-            text: "https://example.com/link2",
-            width: 80,
-            height: 80
-        });
+        for (let i = 1; i <= 7; i++) {
+            new QRCode(document.getElementById("qrcode" + i), {
+                text: "https://example.com/link" + i,
+                width: 80,
+                height: 80
+            });
+        }
     </script>
 </body>
 </html>
