@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="fa">
+<!DOCTYPE html>
+<html lang="fa">
 <head>
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
@@ -16,6 +17,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico?v1.1" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+      /* افزودن استایل برای منوی کشویی */
+      /* ... استایل‌های قبلی */
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -27,7 +33,8 @@
         </a>
       </div>
     </div>
-  </nav>  <div class="clearfix"></div>
+  </nav>  
+  <div class="clearfix"></div>
   <div class="container">
     <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
       <ul class="nav nav-tabs">
@@ -35,41 +42,45 @@
         <li class="active"><a href="./index.html">کانفیگ رایگان</a></li>
         <li class="pull-left"><a href="mailto:mahdi021zamani@gmail.com">تماس‌باما</a></li>
       </ul>
-      <div class="clearfix"></div><div class="alert alert-info" id="defAlert">
-    <p>توسط این‌ابزار می‌تونین به کانفیگ‌های رایگان گردآوری‌شده دسترسی داشته باشین. این‌کانفیگ‌ها به‌صورت خودکار و منظم، بدون دخل‌وتصرف از یه‌سری <a href="mailto:mahdi021zamani@gmail.com" target="_blank">کانال تلگرامی</a> جمع‌آوری میشن و برای رعایت مسائل امنیتی توصیه میشه تنها برای مصارف عادی ازشون استفاده کنین.</p>
+      <div class="clearfix"></div>
+      <div class="alert alert-info" id="defAlert">
+        <p>توسط این‌ابزار می‌تونین به کانفیگ‌های رایگان گردآوری‌شده دسترسی داشته باشین...</p>
+      </div>
+
+      <!-- منوی کشویی -->
+      <div class="dropdown">
+        <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
+        <div id="dropdownContent" class="dropdown-content">
+          <div class="box">
+            <p><span class="icon">🔗</span><strong>لینک 1</strong></p>
+            <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
+            <div id="qrcode1" class="qrcode"></div>
+            <p>کلیک‌ها: <span id="counter1">0</span></p>
+          </div>
+          <!-- افزودن لینک‌های دیگر مشابه لینک بالا -->
+        </div>
+      </div>
+      <div id="successMessage" class="message">لینک با موفقیت کپی شد!</div>
+      
+      <!-- اسکریپت‌های مربوط به منوی کشویی -->
+      <script>
+        function toggleDropdown() {
+          const content = document.getElementById('dropdownContent');
+          content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function copyToClipboard(text) {
+          navigator.clipboard.writeText(text).then(() => {
+            alert('کپی شد: ' + text);
+          });
+        }
+      </script>
+
+    </div>
   </div>
 
-  <ul class="nav nav-pills">
-    <li class="active"><a href="https://tconfig.pages.dev/">پروتکل‌ها</a></li>
-    <li><a href="https://location-58t.pages.dev/">لوکیشن‌ها</a></li>
-                <li class="active"><a href="https://portal-subpishnahadi.pages.dev/">warpساخت</a></li>
-                <li class="active"><a href="https://software-hardware-git.pages.dev/">نرم افزار ها</a></li>
-            </ul>  
-
- <!-- Footer Style & Section -->
-
-<style>
-    footer {
-        text-align: center;
-        margin-top: 3rem;
-        font-size: 0.95rem;
-        color: #555;
-    }
-    .telegram {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1rem;
-    }
-    .telegram img {
-        width: 30px;
-        margin: 0.5rem 0;
-    }
-    .qr {
-        margin-top: 0.5rem;
-        width: 120px;
-    }
-</style><footer>
+  <!-- Footer -->
+  <footer>
     توسط: mahdizamani
     <div class="telegram">
         <span>ارتباط با من از طریق تلگرام:</span>
@@ -78,8 +89,6 @@
         </a>
         <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://t.me/mahdione71" alt="QR Code">
     </div>
-</footer>
-    </div>
-  </div>
+  </footer>
 </body>
 </html>
