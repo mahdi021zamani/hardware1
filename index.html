@@ -135,14 +135,14 @@
     <div class="container">
         <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
             <ul class="nav nav-tabs">
-                <li><a href="mahdi021zamani@gmail.com">معرفی</a></li>
+                <li><a href="mailto:mahdi021zamani@gmail.com">معرفی</a></li>
                 <li class="active"><a href="./index.html">کانفیگ رایگان</a></li>
-                <li class="pull-left"><a href="mahdi021zamani@gmail.com">تماس‌باما</a></li>
+                <li class="pull-left"><a href="mailto:mahdi021zamani@gmail.com">تماس‌باما</a></li>
             </ul>
             <div class="clearfix"></div>
 
             <div class="alert alert-info" id="defAlert">
-                <p>توسط این‌ابزار می‌تونین به کانفیگ‌های رایگان گردآوری‌شده دسترسی داشته باشین. این‌کانفیگ‌ها به‌صورت خودکار و منظم، بدون دخل‌وتصرف از یه‌سری <a href="mahdi021zamani@gmail.com" target="_blank">کانال تلگرامی</a> جمع‌آوری میشن و برای رعایت مسائل امنیتی توصیه میشه تنها برای مصارف عادی ازشون استفاده کنین.</p>
+                <p>توسط این‌ابزار می‌تونین به کانفیگ‌های رایگان گردآوری‌شده دسترسی داشته باشین. این‌کانفیگ‌ها به‌صورت خودکار و منظم، بدون دخل‌وتصرف از یه‌سری <a href="mailto:mahdi021zamani@gmail.com" target="_blank">کانال تلگرامی</a> جمع‌آوری میشن و برای رعایت مسائل امنیتی توصیه میشه تنها برای مصارف عادی ازشون استفاده کنین.</p>
             </div>
 
             <ul class="nav nav-pills">
@@ -155,7 +155,6 @@
             <div class="dropdown">
                 <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
                 <div id="dropdownContent" class="dropdown-content">
-                    <!-- لینک‌ها -->
                     <div class="box">
                         <p><span class="icon">🔗</span><strong>لینک 1</strong></p>
                         <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
@@ -208,3 +207,30 @@
     <script>
         function toggleDropdown() {
             const content = document.getElementById('dropdownContent');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function copyToClipboard(url) {
+            const tempInput = document.createElement('input');
+            document.body.appendChild(tempInput);
+            tempInput.value = url;
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 2000);
+        }
+
+        // ایجاد QR کدها برای لینک‌ها
+        new QRCode(document.getElementById("qrcode1"), "https://example.com/link1");
+        new QRCode(document.getElementById("qrcode2"), "https://example.com/link2");
+        new QRCode(document.getElementById("qrcode3"), "https://example.com/link3");
+        new QRCode(document.getElementById("qrcode4"), "https://example.com/link4");
+        new QRCode(document.getElementById("qrcode5"), "https://example.com/link5");
+        new QRCode(document.getElementById("qrcode6"), "https://example.com/link6");
+        new QRCode(document.getElementById("qrcode7"), "https://example.com/link7");
+    </script>
+</body>
+</html>
