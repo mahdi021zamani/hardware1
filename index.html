@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی کشویی پیشرفته</title>
+    <title>منوی پیشرفته و زیبا</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         body {
@@ -80,8 +80,13 @@
             margin: 10px auto;
         }
         .qrcode canvas {
-            width: 100px !important;
-            height: 100px !important;
+            width: 80px !important;
+            height: 80px !important;
+        }
+        .icon {
+            font-size: 20px;
+            color: #2196f3;
+            margin-right: 5px;
         }
         @keyframes fadeIn {
             from {
@@ -93,25 +98,40 @@
                 transform: translateY(0);
             }
         }
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
     </style>
 </head>
 <body>
-    <h1>منوی کشویی پیشرفته با لینک‌ها</h1>
+    <h1>منوی پیشرفته با لینک‌ها</h1>
     <div class="dropdown">
         <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
         <div id="dropdownContent" class="dropdown-content">
             <div class="box">
-                <p><strong>لینک 1</strong></p>
+                <p><span class="icon">🔗</span><strong>لینک 1</strong></p>
                 <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
                 <div id="qrcode1" class="qrcode"></div>
+                <p>کلیک‌ها: <span id="counter1">0</span></p>
             </div>
             <div class="box">
-                <p><strong>لینک 2</strong></p>
+                <p><span class="icon">🔗</span><strong>لینک 2</strong></p>
                 <button onclick="copyToClipboard('https://example.com/link2')">کپی لینک</button>
                 <div id="qrcode2" class="qrcode"></div>
+                <p>کلیک‌ها: <span id="counter2">0</span></p>
             </div>
         </div>
     </div>
+    <div id="successMessage" class="message">لینک با موفقیت کپی شد!</div>
     <script>
         function toggleDropdown() {
             const content = document.getElementById('dropdownContent');
@@ -120,21 +140,34 @@
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('لینک کپی شد: ' + text);
+                showSuccessMessage();
             }).catch(err => {
                 alert('خطا در کپی کردن لینک: ' + err);
             });
+
+            // افزایش شمارنده کلیک
+            const counterId = text.includes("link1") ? "counter1" : "counter2";
+            const counter = document.getElementById(counterId);
+            counter.textContent = parseInt(counter.textContent) + 1;
+        }
+
+        function showSuccessMessage() {
+            const message = document.getElementById('successMessage');
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 2000);
         }
 
         new QRCode(document.getElementById("qrcode1"), {
             text: "https://example.com/link1",
-            width: 100,
-            height: 100
+            width: 80,
+            height: 80
         });
         new QRCode(document.getElementById("qrcode2"), {
             text: "https://example.com/link2",
-            width: 100,
-            height: 100
+            width: 80,
+            height: 80
         });
     </script>
 </body>
