@@ -6,89 +6,93 @@
   <link href="/assets/css/vazir.css" rel="stylesheet" />
   <link href="/assets/css/style.css?v1.5" rel="stylesheet" />
   <title>MAHDI | کانفیگ رایگان</title>
-  <meta name="description" content="آی پی سالم و تمیز برای کلودفلر (کلادفلر) جهت دسترسی به اینترنت آزاد" />
-  <meta name="keywords" content="کلودفلر, کلادفلر, cloudflare, cf, آی پی تمیز, آی پی سالم, اسکن آی پی" />
-  <meta name="robots" content="index,follow,noodp" />
-  <meta name="googlebot" content="index,follow" />
-  <meta name="theme-color" content="#ff7900" />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico?v1.1" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
-      /* افزودن استایل برای منوی کشویی */
-      /* ... استایل‌های قبلی */
+    .dropdown {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+    .dropdown-content {
+      background: white;
+      border: 1px solid #ddd;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 12px;
+      display: none;
+    }
+    .box {
+      background: linear-gradient(45deg, #ffffff, #f1f8ff);
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 10px 0;
+    }
+    .qrcode canvas {
+      width: 80px !important;
+      height: 80px !important;
+    }
+    #successMessage {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
     <div class="container">
-      <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
-        <a href=".">
-          <img src="./assets/img/cflogo.png?v1.1" alt="logo" />
-          <h1>مهدی♡زمانی</h1>
-        </a>
-      </div>
+      <a href=".">
+        <img src="./assets/img/cflogo.png?v1.1" alt="logo" />
+        <h1>مهدی♡زمانی</h1>
+      </a>
     </div>
-  </nav>  
+  </nav>
   <div class="clearfix"></div>
   <div class="container">
-    <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-centered">
-      <ul class="nav nav-tabs">
-        <li><a href="mailto:mahdi021zamani@gmail.com">معرفی</a></li>
-        <li class="active"><a href="./index.html">کانفیگ رایگان</a></li>
-        <li class="pull-left"><a href="mailto:mahdi021zamani@gmail.com">تماس‌باما</a></li>
-      </ul>
-      <div class="clearfix"></div>
-      <div class="alert alert-info" id="defAlert">
-        <p>توسط این‌ابزار می‌تونین به کانفیگ‌های رایگان گردآوری‌شده دسترسی داشته باشین...</p>
-      </div>
-
-      <!-- منوی کشویی -->
-      <div class="dropdown">
-        <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
-        <div id="dropdownContent" class="dropdown-content">
-          <div class="box">
-            <p><span class="icon">🔗</span><strong>لینک 1</strong></p>
-            <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
-            <div id="qrcode1" class="qrcode"></div>
-            <p>کلیک‌ها: <span id="counter1">0</span></p>
-          </div>
-          <!-- افزودن لینک‌های دیگر مشابه لینک بالا -->
+    <h2>کانفیگ‌های رایگان و ابزارهای اضافی</h2>
+    <div class="dropdown">
+      <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
+      <div id="dropdownContent" class="dropdown-content">
+        <!-- لینک‌ها -->
+        <div class="box">
+          <p>لینک ۱:</p>
+          <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
+          <div id="qrcode1" class="qrcode"></div>
         </div>
+        <!-- ۶ لینک دیگر مشابه این -->
       </div>
-      <div id="successMessage" class="message">لینک با موفقیت کپی شد!</div>
-      
-      <!-- اسکریپت‌های مربوط به منوی کشویی -->
-      <script>
-        function toggleDropdown() {
-          const content = document.getElementById('dropdownContent');
-          content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function copyToClipboard(text) {
-          navigator.clipboard.writeText(text).then(() => {
-            alert('کپی شد: ' + text);
-          });
-        }
-      </script>
-
     </div>
+    <div id="successMessage">لینک با موفقیت کپی شد!</div>
   </div>
-
-  <!-- Footer -->
+  <script>
+    function toggleDropdown() {
+      const content = document.getElementById("dropdownContent");
+      content.style.display = content.style.display === "block" ? "none" : "block";
+    }
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const message = document.getElementById("successMessage");
+        message.style.display = "block";
+        setTimeout(() => { message.style.display = "none"; }, 2000);
+      });
+    }
+    for (let i = 1; i <= 7; i++) {
+      new QRCode(document.getElementById("qrcode" + i), {
+        text: `https://example.com/link${i}`,
+        width: 80,
+        height: 80
+      });
+    }
+  </script>
   <footer>
-    توسط: mahdizamani
-    <div class="telegram">
-        <span>ارتباط با من از طریق تلگرام:</span>
-        <a href="https://t.me/mahdione71" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
-        </a>
-        <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://t.me/mahdione71" alt="QR Code">
-    </div>
+    <p>طراحی شده توسط Mahdi Zamani</p>
   </footer>
 </body>
 </html>
