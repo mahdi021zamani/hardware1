@@ -1,98 +1,147 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="/assets/css/bootstrap-rtl.min.css" rel="stylesheet" />
-  <link href="/assets/css/vazir.css" rel="stylesheet" />
-  <link href="/assets/css/style.css?v1.5" rel="stylesheet" />
-  <title>MAHDI | کانفیگ رایگان</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <style>
-    .dropdown {
-      width: 100%;
-      max-width: 400px;
-      margin: 20px auto;
-    }
-    .dropdown-content {
-      background: white;
-      border: 1px solid #ddd;
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      border-radius: 12px;
-      margin-top: 12px;
-      display: none;
-    }
-    .box {
-      background: linear-gradient(45deg, #ffffff, #f1f8ff);
-      border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 12px;
-      margin: 10px 0;
-    }
-    .qrcode canvas {
-      width: 80px !important;
-      height: 80px !important;
-    }
-    #successMessage {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #4caf50;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <a href=".">
-        <img src="./assets/img/cflogo.png?v1.1" alt="logo" />
-        <h1>مهدی♡زمانی</h1>
-      </a>
-    </div>
-  </nav>
-  <div class="clearfix"></div>
-  <div class="container">
-    <h2>کانفیگ‌های رایگان و ابزارهای اضافی</h2>
-    <div class="dropdown">
-      <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
-      <div id="dropdownContent" class="dropdown-content">
-        <!-- لینک‌ها -->
-        <div class="box">
-          <p>لینک ۱:</p>
-          <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
-          <div id="qrcode1" class="qrcode"></div>
+<!-- ... تا همینجای کد خودت -->
+        <ul class="nav nav-pills">
+            <li class="active"><a href="https://tconfig.pages.dev/">پروتکل‌ها</a></li>
+            <li><a href="https://location-58t.pages.dev/">لوکیشن‌ها</a></li>
+            <li class="active"><a href="https://portal-subpishnahadi.pages.dev/">warpساخت</a></li>
+            <li class="active"><a href="https://software-hardware-git.pages.dev/">نرم افزار ها</a></li>
+        </ul>
+
+        <!-- شروع منوی پیشرفته با ۷ لینک -->
+        <style>
+        /* (اینجا استایل‌های منوی QR لینک‌ها رو بذار) */
+        body {
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        .dropdown {
+            width: 100%;
+            margin-top: 30px;
+        }
+        .dropdown button {
+            width: 100%;
+            background: linear-gradient(45deg, #2196f3, #64b5f6);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .dropdown-content {
+            display: none;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-content .box {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        .dropdown-content .box button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .qrcode {
+            margin-top: 10px;
+        }
+        .message {
+            display: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown()">نمایش لینک‌ها</button>
+            <div id="dropdownContent" class="dropdown-content">
+                <!-- لینک‌های QR -->
+                <div class="box">
+                    <p><strong>لینک 1</strong></p>
+                    <button onclick="copyToClipboard('https://example.com/link1', 1)">کپی لینک</button>
+                    <div id="qrcode1" class="qrcode"></div>
+                    <p>کلیک‌ها: <span id="counter1">0</span></p>
+                </div>
+                <!-- لینک‌های ۲ تا ۷ به همین صورت ادامه داره -->
+                <div class="box">
+                    <p><strong>لینک 2</strong></p>
+                    <button onclick="copyToClipboard('https://example.com/link2', 2)">کپی لینک</button>
+                    <div id="qrcode2" class="qrcode"></div>
+                    <p>کلیک‌ها: <span id="counter2">0</span></p>
+                </div>
+                <div class="box">
+                    <p><strong>لینک 3</strong></p>
+                    <button onclick="copyToClipboard('https://example.com/link3', 3)">کپی لینک</button>
+                    <div id="qrcode3" class="qrcode"></div>
+                    <p>کلیک‌ها: <span id="counter3">0</span></p>
+                </div>
+                <div class="box">
+                    <p><strong>لینک 4</strong></p>
+                    <button onclick="copyToClipboard('https://example.com/link4', 4)">کپی لینک</button>
+                    <div id="qrcode4" class="qrcode"></div>
+                    <p>کلیک‌ها: <span id="counter4">0</span></p>
+                </div>
+                <div class="box">
+                    <p><strong>لینک 5</strong></p>
+                    <button onclick="copyToClipboard('https://example.com/link5', 5)">کپی لینک</button>
+                    <div id="qrcode5" class="qrcode"></div>
+                    <p>کلیک‌ها: <span id="counter5">0</span></p>
+                </div>
+                <div class="box">
+                    <p><strong>لینک 6</strong></p>
+                    <button onclick="copyToClipboard('https://example.com/link6', 6)">کپی لینک</button>
+                    <div id="qrcode6" class="qrcode"></div>
+                    <p>کلیک‌ها: <span id="counter6">0</span></p>
+                </div>
+                <div class="box">
+                    <p><strong>لینک 7</strong></p>
+                    <button onclick="copyToClipboard('https://example.com/link7', 7)">کپی لینک</button>
+                    <div id="qrcode7" class="qrcode"></div>
+                    <p>کلیک‌ها: <span id="counter7">0</span></p>
+                </div>
+            </div>
+            <div id="successMessage" class="message">لینک با موفقیت کپی شد!</div>
         </div>
-        <!-- ۶ لینک دیگر مشابه این -->
-      </div>
-    </div>
-    <div id="successMessage">لینک با موفقیت کپی شد!</div>
-  </div>
-  <script>
-    function toggleDropdown() {
-      const content = document.getElementById("dropdownContent");
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    }
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        const message = document.getElementById("successMessage");
-        message.style.display = "block";
-        setTimeout(() => { message.style.display = "none"; }, 2000);
-      });
-    }
-    for (let i = 1; i <= 7; i++) {
-      new QRCode(document.getElementById("qrcode" + i), {
-        text: `https://example.com/link${i}`,
-        width: 80,
-        height: 80
-      });
-    }
-  </script>
-  <footer>
-    <p>طراحی شده توسط Mahdi Zamani</p>
-  </footer>
-</body>
-</html>
+
+        <script>
+        function toggleDropdown() {
+            const content = document.getElementById('dropdownContent');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+        function copyToClipboard(text, index) {
+            navigator.clipboard.writeText(text).then(() => {
+                showSuccessMessage();
+                const counter = document.getElementById("counter" + index);
+                counter.textContent = parseInt(counter.textContent) + 1;
+            }).catch(err => {
+                alert('خطا در کپی کردن لینک: ' + err);
+            });
+        }
+        function showSuccessMessage() {
+            const message = document.getElementById('successMessage');
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 2000);
+        }
+        for (let i = 1; i <= 7; i++) {
+            new QRCode(document.getElementById("qrcode" + i), {
+                text: "https://example.com/link" + i,
+                width: 80,
+                height: 80
+            });
+        }
+        </script>
+        <!-- پایان منوی پیشرفته -->
