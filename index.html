@@ -8,11 +8,37 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
             text-align: center;
-            margin: 20px;
+            margin: 0;
+            padding: 20px;
         }
-        .link-container {
-            margin-bottom: 20px;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .box {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+        }
+        .box button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .box button:hover {
+            background-color: #0056b3;
         }
         .qrcode {
             margin: 10px 0;
@@ -20,16 +46,18 @@
     </style>
 </head>
 <body>
-    <h1>لینک‌های قابل کپی</h1>
-    <div class="link-container">
-        <p>لینک -shadowmer:1</p>
-        <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
-        <div id="qrcode1" class="qrcode"></div>
-    </div>
-    <div class="link-container">
-        <p>لینک 2:</p>
-        <button onclick="copyToClipboard('https://example.com/link2')">کپی لینک</button>
-        <div id="qrcode2" class="qrcode"></div>
+    <h1 style="color: #333;">لینک‌های قابل کپی و کد QR</h1>
+    <div class="container">
+        <div class="box">
+            <p><strong>لینک 1</strong></p>
+            <button onclick="copyToClipboard('https://example.com/link1')">کپی لینک</button>
+            <div id="qrcode1" class="qrcode"></div>
+        </div>
+        <div class="box">
+            <p><strong>لینک 2</strong></p>
+            <button onclick="copyToClipboard('https://example.com/link2')">کپی لینک</button>
+            <div id="qrcode2" class="qrcode"></div>
+        </div>
     </div>
     <script>
         function copyToClipboard(text) {
